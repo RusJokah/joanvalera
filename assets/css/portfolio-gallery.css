@@ -1,0 +1,72 @@
+/*
+==================================================
+JOAN VALERA
+PORTFOLIO GALLERY
+VERSION 2.0
+==================================================
+*/
+
+
+/*
+--------------------------------------------------
+01. HIDE IMAGE TITLES AND DESCRIPTIONS
+
+NOTA IMPORTANTE (no se ha tocado la regla, solo se
+documenta): esto oculta VISUALMENTE el titulo/descripcion
+que el plugin de galeria genera para cada imagen (suele
+salir relleno de palabras clave sueltas del campo "Titulo"
+de la Media Library). El usuario ya no lo ve, pero el
+texto sigue existiendo en el HTML. Para Google eso puede
+leerse como "texto oculto", algo que penaliza en SEO
+aunque no haya mala intencion. La solucion de fondo no es
+CSS: es limpiar el campo "Titulo" de cada imagen en la
+Media Library para que ese texto no exista ni oculto.
+--------------------------------------------------
+*/
+
+.fg-layout-3-item-content {
+
+    display: none !important;
+
+}
+
+
+/*
+--------------------------------------------------
+02. REMOVE EMPTY CONTENT SPACING
+--------------------------------------------------
+*/
+
+.fg-layout-3-item {
+
+    margin-bottom: 0 !important;
+
+}
+
+
+/*
+--------------------------------------------------
+03. KEEP IMAGE WRAPPER CLEAN
+--------------------------------------------------
+*/
+
+.fg-layout-3-item .fg-item-content {
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+}
+
+
+/*
+--------------------------------------------------
+04. REMOVE TITLE SPACING
+--------------------------------------------------
+*/
+
+.fg-layout-3-item .fg-item-title {
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+}

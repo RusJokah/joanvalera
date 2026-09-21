@@ -1,0 +1,952 @@
+/*
+Theme Name: Hello Elementor Child
+Theme URI: https://elementor.com/hello-theme/
+Description: Child Theme personalizado para la web de Joan Valera.
+Author: Joan Valera Creative
+Author URI: https://joanvalera.com/
+Template: hello-elementor
+Version: 1.0.0
+Text Domain: hello-elementor-child
+*/
+
+/*
+==================================================
+DESIGN TOKENS
+Valores de marca reutilizados en style.css y en
+assets/css/blog-articulos.css (que se carga despues
+y puede usar estas mismas variables).
+
+Los valores son EXACTAMENTE los que ya se usaban
+sueltos por el CSS; agruparlos aqui no cambia ningun
+color ni fuente, solo evita repetirlos y facilita
+cambiarlos en un unico sitio en el futuro.
+==================================================
+*/
+
+:root {
+
+    /* Colores de marca */
+    --jv-color-gold: #D4AF37;
+    --jv-color-gold-rgb: 212, 175, 55;
+    --jv-color-ink: #1a1a1a;
+    --jv-color-ink-deep: #111111;
+    --jv-color-text: #666666;
+    --jv-color-text-muted: #777777;
+    --jv-color-white: #ffffff;
+
+    /* Tipografias */
+    --jv-font-serif: "Roboto Serif", serif;
+    --jv-font-sans: "Roboto", sans-serif;
+
+}
+
+
+
+/*
+==================================================
+JOAN VALERA — GLOBAL CHILD THEME
+==================================================
+*/
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ==================================================
+   JOAN VALERA — SHOP IMAGE CAROUSEL
+   ================================================== */
+
+.jv-shop-carousel .swiper,
+.jv-shop-carousel .elementor-image-carousel-wrapper {
+    width: 100%;
+}
+
+.jv-shop-carousel .swiper-wrapper {
+    align-items: stretch;
+}
+
+.jv-shop-carousel .swiper-slide {
+    height: 520px !important;
+    display: flex !important;
+    align-items: stretch !important;
+    overflow: hidden !important;
+}
+
+.jv-shop-carousel .swiper-slide-image,
+.jv-shop-carousel .swiper-slide img {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    max-height: none !important;
+    display: block !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+}
+/* ==================================================
+   RESPONSIVE
+   ================================================== */
+
+@media (max-width: 1024px) {
+
+    .jv-shop-carousel .swiper-slide {
+        height: 420px !important;
+    }
+
+}
+
+@media (max-width: 767px) {
+
+    .jv-shop-carousel .swiper-slide {
+        height: 380px !important;
+    }
+
+}
+/* ==================================================
+   JOAN VALERA — PROCESO DE COMPRA
+   ELIGE · PERSONALIZA · RECÍBELA
+   ================================================== */
+
+.jv-process {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+
+/* --------------------------------------------------
+   TARJETAS
+   -------------------------------------------------- */
+
+.jv-process-card {
+    position: relative;
+    flex: 1 1 0;
+    padding: 10px 45px;
+    box-sizing: border-box;
+}
+
+
+/* --------------------------------------------------
+   LÍNEA CONECTORA
+   -------------------------------------------------- */
+
+.jv-process-card:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 42px;
+    right: 0;
+    width: 1px;
+    height: 90px;
+    background: rgba(var(--jv-color-gold-rgb), 0.35);
+}
+
+
+/* --------------------------------------------------
+   NÚMERO
+   -------------------------------------------------- */
+
+.jv-process-number {
+    display: block;
+    margin-bottom: 24px;
+    font-family: var(--jv-font-serif);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    line-height: 1;
+    color: var(--jv-color-gold);
+}
+
+
+/* --------------------------------------------------
+   TÍTULO
+   -------------------------------------------------- */
+
+.jv-process-title {
+    margin: 0 0 18px;
+    font-family: var(--jv-font-serif);
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    color: var(--jv-color-ink);
+}
+
+
+/* --------------------------------------------------
+   TEXTO
+   -------------------------------------------------- */
+
+.jv-process-text {
+    margin: 0;
+    max-width: 320px;
+    font-family: var(--jv-font-sans);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--jv-color-text);
+}
+
+
+/* --------------------------------------------------
+   PEQUEÑO DETALLE EDITORIAL
+   -------------------------------------------------- */
+
+.jv-process-card::before {
+    content: "";
+    display: block;
+    width: 32px;
+    height: 1px;
+    margin-bottom: 22px;
+    background: var(--jv-color-gold);
+}
+
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 1024px) {
+
+    .jv-process-card {
+        padding: 10px 25px;
+    }
+
+    .jv-process-title {
+        font-size: 22px;
+    }
+
+    .jv-process-text {
+        font-size: 15px;
+    }
+
+    .jv-process-card:not(:last-child)::after {
+        height: 85px;
+    }
+}
+
+
+/* ==================================================
+   MÓVIL
+   ================================================== */
+
+@media (max-width: 767px) {
+
+    .jv-process {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .jv-process-card {
+        padding: 30px 10px 35px;
+    }
+
+    .jv-process-card:not(:last-child)::after {
+        display: none;
+    }
+
+    .jv-process-number {
+        margin-bottom: 18px;
+        font-size: 13px;
+    }
+
+    .jv-process-title {
+        margin-bottom: 14px;
+        font-size: 22px;
+    }
+
+    .jv-process-text {
+        max-width: 100%;
+        font-size: 15px;
+        line-height: 1.65;
+    }
+
+    .jv-process-card::before {
+        width: 25px;
+        margin-bottom: 18px;
+    }
+}
+
+/* ==================================================
+   JOAN VALERA — BLOG
+   HERO
+
+   AVISO (no se ha tocado nada, solo se documenta):
+   .jv-blog-eyebrow y .jv-blog-title se usan aqui para
+   un bloque tipo "hero" (pensado para la landing /blog/
+   en Elementor), y las MISMAS clases se reutilizan con
+   reglas distintas en assets/css/blog-articulos.css
+   (para el archivo real de articulos: home.php /
+   category.php). Hoy no choca porque blog-articulos.css
+   se carga solo en esas plantillas y llega despues en el
+   orden de carga, pero si algun dia se usa el hero de
+   Elementor en una pagina donde tambien cargue
+   blog-articulos.css, los estilos podrian mezclarse.
+   No se han renombrado las clases para no romper nada
+   ya montado en Elementor; si se puede, mejor no repetir
+   estos nombres en componentes nuevos.
+   ================================================== */
+
+.jv-blog {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.jv-blog-hero {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.jv-blog-eyebrow {
+    margin-bottom: 24px;
+    font-family: var(--jv-font-sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.20em;
+    line-height: 1.5;
+    color: var(--jv-color-text-muted);
+}
+
+.jv-blog-title {
+    margin: 0 0 24px;
+    font-family: var(--jv-font-serif);
+    font-size: clamp(52px, 7vw, 88px);
+    font-weight: 500;
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: var(--jv-color-ink);
+}
+
+.jv-blog-intro {
+    max-width: 650px;
+    margin: 0 auto;
+    font-family: var(--jv-font-sans);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--jv-color-text);
+}
+/* ==================================================
+   BLOG — RESPONSIVE
+   ================================================== */
+
+@media (max-width: 767px) {
+
+    .jv-blog-hero {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .jv-blog-eyebrow {
+        font-size: 10px;
+        letter-spacing: 0.15em;
+        line-height: 1.7;
+    }
+
+    .jv-blog-title {
+        font-size: 52px;
+    }
+
+    .jv-blog-intro {
+        font-size: 16px;
+        line-height: 1.65;
+    }
+}
+/* ==================================================
+   BLOG — ARTÍCULO DESTACADO
+   ================================================== */
+
+.jv-blog-feature {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto 120px;
+    display: flex;
+    align-items: stretch;
+    box-sizing: border-box;
+}
+
+.jv-feature-image {
+    width: 50%;
+    min-height: 500px;
+    overflow: hidden;
+}
+
+.jv-feature-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s ease;
+}
+
+.jv-feature-image:hover img {
+    transform: scale(1.025);
+}
+
+.jv-feature-content {
+    width: 50%;
+    padding: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.jv-feature-label {
+    margin-bottom: 24px;
+    font-family: var(--jv-font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: var(--jv-color-gold);
+}
+
+.jv-feature-title {
+    margin: 0 0 24px;
+    font-family: var(--jv-font-serif);
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--jv-color-ink);
+}
+
+.jv-feature-excerpt {
+    max-width: 480px;
+    margin-bottom: 35px;
+    font-family: var(--jv-font-sans);
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--jv-color-text);
+}
+
+.jv-feature-link {
+    display: inline-block;
+    font-family: var(--jv-font-sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--jv-color-ink);
+    transition: color 0.3s ease;
+}
+
+.jv-feature-link:hover {
+    color: var(--jv-color-gold);
+}
+
+
+/* ==================================================
+   BLOG — FEATURE RESPONSIVE ARTÍCULO DESTACADO
+   ================================================== */
+
+@media (max-width: 1024px) {
+
+    .jv-feature-content {
+        padding: 45px;
+    }
+
+    .jv-feature-title {
+        font-size: 30px;
+    }
+
+    .jv-feature-image {
+        min-height: 420px;
+    }
+}
+
+
+@media (max-width: 767px) {
+
+    .jv-blog-feature {
+        flex-direction: column;
+        margin-bottom: 80px;
+    }
+
+    .jv-feature-image,
+    .jv-feature-content {
+        width: 100%;
+    }
+
+    .jv-feature-image {
+        min-height: 300px;
+    }
+
+    .jv-feature-content {
+        padding: 40px 25px;
+    }
+
+    .jv-feature-title {
+        font-size: 29px;
+    }
+
+    .jv-feature-excerpt {
+        font-size: 15px;
+    }
+}
+
+/* ==================================================
+   JOAN VALERA — BLOG
+   ÚLTIMOS ARTÍCULOS
+   ================================================== */
+
+
+/* ==================================================
+   CONTENEDOR PRINCIPAL
+   ================================================== */
+
+.jv-blog-latest {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 120px;
+}
+
+
+/* ==================================================
+   TÍTULO DE SECCIÓN
+   ================================================== */
+
+.jv-section-title {
+    margin: 0 0 15px;
+    font-family: var(--jv-font-serif);
+    font-size: 42px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--jv-color-ink);
+}
+
+
+/* ==================================================
+   INTRODUCCIÓN
+   ================================================== */
+
+.jv-section-intro {
+    max-width: 650px;
+    margin-bottom: 50px;
+    font-family: var(--jv-font-sans);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--jv-color-text);
+}
+
+
+/* ==================================================
+   GRID DE ARTÍCULOS
+   ================================================== */
+
+.jv-post-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 55px 28px;
+}
+
+
+/* ==================================================
+   TARJETA
+   ================================================== */
+
+.jv-post-card {
+    width: 100%;
+    min-width: 0;
+}
+
+
+/* ==================================================
+   IMAGEN
+   ================================================== */
+
+.jv-post-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.jv-post-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.jv-post-image:hover img {
+    transform: scale(1.035);
+}
+
+
+/* ==================================================
+   CATEGORÍA
+   ================================================== */
+
+.jv-post-category {
+    margin-bottom: 12px;
+    font-family: var(--jv-font-sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: var(--jv-color-gold);
+}
+
+
+/* ==================================================
+   TÍTULO
+   ================================================== */
+
+.jv-post-title {
+    margin: 0 0 10px;
+    font-family: var(--jv-font-serif);
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.jv-post-title a {
+    color: var(--jv-color-ink);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.jv-post-title a:hover {
+    color: var(--jv-color-gold);
+}
+
+
+/* ==================================================
+   FECHA
+   ================================================== */
+
+.jv-post-date {
+    margin-bottom: 18px;
+    font-family: var(--jv-font-sans);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: #999999;
+}
+
+
+/* ==================================================
+   EXTRACTO
+   ================================================== */
+
+.jv-post-excerpt {
+    margin: 0 0 22px;
+    font-family: var(--jv-font-sans);
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--jv-color-text);
+}
+
+
+/* ==================================================
+   ENLACE
+   ================================================== */
+
+.jv-post-link {
+    display: inline-block;
+    font-family: var(--jv-font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--jv-color-ink);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.jv-post-link:hover {
+    color: var(--jv-color-gold);
+}
+
+
+/* ==================================================
+   SIN ARTÍCULOS
+   ================================================== */
+
+.jv-no-posts {
+    font-family: var(--jv-font-sans);
+    font-size: 15px;
+    color: var(--jv-color-text-muted);
+}
+
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 1024px) {
+
+    .jv-blog-latest {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .jv-post-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 45px 25px;
+    }
+
+    .jv-section-title {
+        font-size: 36px;
+    }
+}
+
+
+/* ==================================================
+   MÓVIL
+   ================================================== */
+
+@media (max-width: 767px) {
+
+    .jv-blog-latest {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 80px;
+    }
+
+    .jv-section-title {
+        font-size: 31px;
+    }
+
+    .jv-section-intro {
+        font-size: 15px;
+        margin-bottom: 35px;
+    }
+
+    .jv-post-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .jv-post-title {
+        font-size: 24px;
+    }
+}
+
+/* ==================================================
+   JOAN VALERA — BLOG
+   EXPLORA POR CATEGORÍA
+
+   AVISO (no se ha tocado nada, solo se documenta):
+   .jv-blog-categories aqui es el contenedor grande de
+   la rejilla de categorias (con .jv-category-card
+   dentro). En home.php / category.php, la misma clase
+   .jv-blog-categories se usa para el <nav> de pildoras
+   de categoria (con .jv-blog-category-link dentro,
+   estilizado en blog-articulos.css). Como los hijos se
+   llaman distinto (.jv-category-card vs
+   .jv-blog-category-link) no llegan a chocar visualmente,
+   pero es el mismo caso que el del hero: dos componentes
+   distintos comparten nombre de clase por casualidad.
+   ================================================== */
+
+.jv-blog-categories {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0 120px;
+}
+
+
+/* ==================================================
+   TÍTULO
+   ================================================== */
+
+.jv-categories-title {
+    margin: 0 0 15px;
+    font-family: var(--jv-font-serif);
+    font-size: 42px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--jv-color-ink);
+}
+
+
+/* ==================================================
+   INTRO
+   ================================================== */
+
+.jv-categories-intro {
+    max-width: 650px;
+    margin: 0 0 50px;
+    font-family: var(--jv-font-sans);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--jv-color-text);
+}
+
+
+/* ==================================================
+   GRID
+   ================================================== */
+
+.jv-category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    background: #dcdcdc;
+}
+
+
+/* ==================================================
+   TARJETA
+   ================================================== */
+
+.jv-category-card {
+    position: relative;
+    min-height: 260px;
+    padding: 38px;
+    background: var(--jv-color-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background-color 0.4s ease;
+}
+
+
+/* ==================================================
+   NÚMERO
+   ================================================== */
+
+.jv-category-number {
+    font-family: var(--jv-font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--jv-color-gold);
+}
+
+
+/* ==================================================
+   TÍTULO
+   ================================================== */
+
+.jv-category-name {
+    margin: 35px 0 12px;
+    font-family: var(--jv-font-serif);
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--jv-color-ink);
+}
+
+
+/* ==================================================
+   DESCRIPCIÓN
+   ================================================== */
+
+.jv-category-description {
+    max-width: 430px;
+    margin: 0;
+    font-family: var(--jv-font-sans);
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--jv-color-text);
+}
+
+
+/* ==================================================
+   ENLACE
+   ================================================== */
+
+.jv-category-link {
+    margin-top: 28px;
+    font-family: var(--jv-font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--jv-color-ink);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+
+/* ==================================================
+   HOVER
+   ================================================== */
+
+.jv-category-card:hover {
+    background: #faf9f5;
+}
+
+.jv-category-card:hover .jv-category-link {
+    color: var(--jv-color-gold);
+}
+
+
+/* ==================================================
+   ÚLTIMA TARJETA
+   ================================================== */
+
+.jv-category-card:last-child {
+    grid-column: span 2;
+}
+
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 1024px) {
+
+    .jv-blog-categories {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .jv-categories-title {
+        font-size: 36px;
+    }
+
+    .jv-category-card {
+        min-height: 240px;
+        padding: 32px;
+    }
+
+}
+
+
+/* ==================================================
+   MÓVIL
+   ================================================== */
+
+@media (max-width: 767px) {
+
+    .jv-blog-categories {
+        padding: 20px 20px 80px;
+    }
+
+    .jv-categories-title {
+        font-size: 31px;
+    }
+
+    .jv-categories-intro {
+        font-size: 15px;
+        margin-bottom: 35px;
+    }
+
+    .jv-category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .jv-category-card {
+        min-height: 220px;
+        padding: 28px;
+    }
+
+    .jv-category-card:last-child {
+        grid-column: span 1;
+    }
+
+    .jv-category-name {
+        font-size: 27px;
+    }
+
+}

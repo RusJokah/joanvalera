@@ -1,0 +1,641 @@
+/* =========================================================
+   JOAN VALERA — BLOG / ARTICULOS
+   Editorial Luxury Layout
+
+   Usa los design tokens (colores y tipografias) definidos
+   en :root dentro de style.css, que se carga antes que este
+   archivo (ver jv_enqueue_blog_assets() en functions.php).
+   ========================================================= */
+
+
+/* =========================================================
+   CONTENEDOR PRINCIPAL
+   ========================================================= */
+
+.jv-blog-archive {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 115px 50px 130px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CABECERA
+
+   AVISO: .jv-blog-eyebrow y .jv-blog-title tambien existen
+   en style.css con otras reglas, pensadas para un bloque
+   "hero" distinto (ver aviso alli). Aqui mandan estas
+   reglas porque este archivo se carga despues, solo en
+   home.php / category.php. No se han renombrado las
+   clases para no romper nada ya montado.
+   ========================================================= */
+
+.jv-blog-header {
+    max-width: 900px;
+    margin: 0 auto 72px;
+    text-align: center;
+}
+
+.jv-blog-eyebrow {
+    display: block;
+
+    margin-bottom: 20px;
+
+    font-family: var(--jv-font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+
+    color: var(--jv-color-gold);
+}
+
+.jv-blog-title {
+    margin: 0;
+
+    font-family: var(--jv-font-serif);
+    font-size: clamp(48px, 5.2vw, 78px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.035em;
+
+    color: var(--jv-color-ink-deep);
+}
+
+.jv-blog-description {
+    max-width: 650px;
+    margin: 28px auto 0;
+
+    font-family: var(--jv-font-sans);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.75;
+
+    color: var(--jv-color-text);
+}
+
+
+/* =========================================================
+   CATEGORÍAS
+
+   AVISO: .jv-blog-categories tambien existe en style.css
+   como contenedor de otra rejilla ("EXPLORA POR CATEGORÍA").
+   Los hijos van con nombres distintos en cada caso, asi
+   que no se pisan, pero comparten el nombre del contenedor
+   por casualidad (ver aviso en style.css).
+   ========================================================= */
+
+.jv-blog-categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    column-gap: 34px;
+    row-gap: 13px;
+
+    margin: 0 auto 78px;
+    padding: 22px 0;
+
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.jv-blog-category-link {
+    position: relative;
+
+    display: inline-block;
+
+    padding: 7px 0;
+
+    font-family: var(--jv-font-sans);
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    color: #555555;
+
+    transition:
+        color 0.35s ease,
+        opacity 0.35s ease;
+}
+
+.jv-blog-category-link::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 1px;
+
+    background: var(--jv-color-gold);
+
+    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.jv-blog-category-link:hover,
+.jv-blog-category-link.is-active {
+    color: var(--jv-color-ink-deep);
+}
+
+.jv-blog-category-link:hover::after,
+.jv-blog-category-link.is-active::after {
+    width: 100%;
+}
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.jv-blog-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    column-gap: 34px;
+    row-gap: 78px;
+}
+
+
+/* =========================================================
+   TARJETA
+   ========================================================= */
+
+.jv-blog-card {
+    min-width: 0;
+}
+
+
+/* =========================================================
+   IMAGEN
+   ========================================================= */
+
+.jv-blog-card-image {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+    aspect-ratio: 3 / 2;
+
+    overflow: hidden;
+
+    background: #eeeeee;
+
+    text-decoration: none;
+}
+
+.jv-blog-card-image::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: 2;
+
+    background: rgba(0, 0, 0, 0);
+
+    pointer-events: none;
+
+    transition: background 0.5s ease;
+}
+
+.jv-blog-card-image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transform: scale(1);
+
+    transition:
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* Hover */
+
+.jv-blog-card:hover .jv-blog-card-image img {
+    transform: scale(1.045);
+}
+
+.jv-blog-card:hover .jv-blog-card-image::before {
+    background: rgba(0, 0, 0, 0.07);
+}
+
+
+/* =========================================================
+   CONTENIDO
+   ========================================================= */
+
+.jv-blog-card-content {
+    padding-top: 24px;
+}
+
+
+/* =========================================================
+   CATEGORÍA DE LA TARJETA
+   ========================================================= */
+
+.jv-blog-card-category {
+    display: inline-block;
+
+    margin-bottom: 12px;
+
+    font-family: var(--jv-font-sans);
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    color: #B18F22;
+
+    transition:
+        color 0.3s ease;
+}
+
+.jv-blog-card-category:hover {
+    color: var(--jv-color-gold);
+}
+
+
+/* =========================================================
+   TÍTULO
+   ========================================================= */
+
+.jv-blog-card-title {
+    margin: 0;
+
+    font-family: var(--jv-font-serif);
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 1.28;
+    letter-spacing: -0.018em;
+}
+
+.jv-blog-card-title a {
+    color: var(--jv-color-ink-deep);
+    text-decoration: none;
+
+    transition:
+        color 0.35s ease;
+}
+
+.jv-blog-card-title a:hover {
+    color: #8F751D;
+}
+
+
+/* =========================================================
+   META
+   ========================================================= */
+
+.jv-blog-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+
+    margin-top: 24px;
+    padding-top: 15px;
+
+    border-top: 1px solid rgba(0, 0, 0, 0.09);
+}
+
+.jv-blog-card-meta time {
+    font-family: var(--jv-font-sans);
+    font-size: 9px;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+
+    color: #888888;
+}
+
+
+/* =========================================================
+   LEER ARTÍCULO
+   ========================================================= */
+
+.jv-blog-card-link {
+    position: relative;
+
+    display: inline-block;
+
+    padding-bottom: 3px;
+
+    font-family: var(--jv-font-sans);
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    color: #222222;
+
+    transition:
+        color 0.35s ease,
+        letter-spacing 0.35s ease;
+}
+
+.jv-blog-card-link::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 1px;
+
+    background: var(--jv-color-gold);
+
+    transition:
+        width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.jv-blog-card-link:hover {
+    color: var(--jv-color-gold);
+    letter-spacing: 0.18em;
+}
+
+.jv-blog-card-link:hover::after {
+    width: 100%;
+}
+
+
+/* =========================================================
+   PAGINACIÓN
+   ========================================================= */
+
+.jv-blog-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 4px;
+
+    margin-top: 115px;
+}
+
+.jv-blog-pagination .page-numbers {
+    position: relative;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 42px;
+    height: 42px;
+    padding: 0 8px;
+
+    box-sizing: border-box;
+
+    font-family: var(--jv-font-sans);
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+
+    color: var(--jv-color-text);
+
+    transition:
+        color 0.3s ease;
+}
+
+.jv-blog-pagination .page-numbers:hover {
+    color: var(--jv-color-ink-deep);
+}
+
+
+/* Página activa */
+
+.jv-blog-pagination .page-numbers.current {
+    color: var(--jv-color-ink-deep);
+}
+
+.jv-blog-pagination .page-numbers.current::after {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+    bottom: 3px;
+
+    width: 18px;
+    height: 1px;
+
+    background: var(--jv-color-gold);
+
+    transform: translateX(-50%);
+}
+
+
+/* Flechas */
+
+.jv-blog-pagination .page-numbers.next,
+.jv-blog-pagination .page-numbers.prev {
+    font-size: 16px;
+    letter-spacing: 0;
+}
+
+.jv-blog-pagination .page-numbers.next:hover,
+.jv-blog-pagination .page-numbers.prev:hover {
+    color: var(--jv-color-gold);
+}
+
+
+/* =========================================================
+   ESTADO VACÍO
+   ========================================================= */
+
+.jv-blog-empty {
+    padding: 100px 20px;
+
+    text-align: center;
+
+    font-family: var(--jv-font-sans);
+    font-size: 15px;
+    line-height: 1.7;
+
+    color: var(--jv-color-text-muted);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .jv-blog-archive {
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+
+    .jv-blog-grid {
+        column-gap: 25px;
+        row-gap: 65px;
+    }
+
+    .jv-blog-card-title {
+        font-size: 23px;
+    }
+
+    .jv-blog-categories {
+        column-gap: 25px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET PEQUEÑA
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    .jv-blog-archive {
+        padding: 75px 22px 90px;
+    }
+
+
+    /* Cabecera */
+
+    .jv-blog-header {
+        margin-bottom: 50px;
+    }
+
+    .jv-blog-eyebrow {
+        margin-bottom: 16px;
+
+        font-size: 9px;
+        letter-spacing: 0.24em;
+    }
+
+    .jv-blog-title {
+        font-size: 44px;
+        letter-spacing: -0.03em;
+    }
+
+    .jv-blog-description {
+        margin-top: 20px;
+
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+
+    /* Categorías */
+
+    .jv-blog-categories {
+        justify-content: flex-start;
+
+        column-gap: 19px;
+        row-gap: 7px;
+
+        margin-bottom: 52px;
+        padding: 18px 0;
+    }
+
+    .jv-blog-category-link {
+        font-size: 9px;
+        letter-spacing: 0.12em;
+    }
+
+
+    /* Grid */
+
+    .jv-blog-grid {
+        grid-template-columns: 1fr;
+
+        row-gap: 58px;
+    }
+
+
+    /* Tarjetas */
+
+    .jv-blog-card-content {
+        padding-top: 20px;
+    }
+
+    .jv-blog-card-category {
+        margin-bottom: 9px;
+
+        font-size: 8px;
+    }
+
+    .jv-blog-card-title {
+        font-size: 23px;
+        line-height: 1.3;
+    }
+
+    .jv-blog-card-meta {
+        margin-top: 20px;
+    }
+
+
+    /* Paginación */
+
+    .jv-blog-pagination {
+        margin-top: 75px;
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL PEQUEÑO
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .jv-blog-archive {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .jv-blog-title {
+        font-size: 39px;
+    }
+
+    .jv-blog-description {
+        font-size: 13px;
+    }
+
+    .jv-blog-categories {
+        column-gap: 15px;
+    }
+
+    .jv-blog-category-link {
+        font-size: 8px;
+    }
+
+    .jv-blog-card-title {
+        font-size: 22px;
+    }
+
+    .jv-blog-pagination .page-numbers {
+        min-width: 36px;
+        height: 38px;
+    }
+
+}

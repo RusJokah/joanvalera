@@ -1,0 +1,1554 @@
+/* 
+================================================== 
+JOAN VALERA — CINEMATIC PROJECT SHOWCASE 
+Version: 2.1.0 
+================================================== 
+*/
+
+
+/* 
+================================================== 
+01. COMPONENT 
+================================================== 
+*/
+
+.jv-project {
+
+    --jv-height: min(820px, 88vh);
+
+    --jv-text: #ffffff;
+    --jv-muted: rgba(255, 255, 255, 0.78);
+
+    --jv-gold: #D4AF37;
+
+    --jv-transition:
+        900ms cubic-bezier(0.22, 1, 0.36, 1);
+
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+    height: var(--jv-height);
+
+    margin: 0;
+    padding: 0;
+
+    overflow: hidden;
+
+    color: var(--jv-text);
+
+    text-decoration: none;
+
+    border-radius: 15px;
+
+    background: #111;
+
+    isolation: isolate;
+
+    cursor: pointer;
+
+    perspective: 1400px;
+
+    transform-style: preserve-3d;
+
+    will-change: transform;
+
+    transition:
+        transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+
+}
+
+
+/* 
+================================================== 
+02. RESET 
+================================================== 
+*/
+
+.jv-project *,
+.jv-project *::before,
+.jv-project *::after {
+
+    box-sizing: border-box;
+
+}
+
+
+/* 
+================================================== 
+03. IMAGE 
+================================================== 
+*/
+
+.jv-project__image {
+
+    position: absolute;
+
+    inset: -3%;
+
+    z-index: 0;
+
+    width: 106%;
+    height: 106%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    transform:
+        translate3d(0, 0, 0)
+        scale(1.035);
+
+    transform-origin: center center;
+
+    will-change: transform;
+
+    transition:
+        transform 1000ms cubic-bezier(0.22, 1, 0.36, 1);
+
+}
+
+
+/* 
+================================================== 
+04. IMAGE ZOOM 
+================================================== 
+*/
+
+.jv-project:hover .jv-project__image {
+
+    transform:
+        translate3d(
+            var(--jv-image-x, 0px),
+            var(--jv-image-y, 0px),
+            20px
+        )
+        scale(1.07);
+
+}
+
+
+/* 
+================================================== 
+05. OVERLAY 
+================================================== 
+*/
+
+.jv-project__overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.04) 0%,
+            rgba(0, 0, 0, 0.08) 42%,
+            rgba(0, 0, 0, 0.60) 100%
+        );
+
+    pointer-events: none;
+
+    transition:
+        background 900ms cubic-bezier(0.22, 1, 0.36, 1);
+
+}
+
+
+/* 
+================================================== 
+06. HOVER OVERLAY 
+================================================== 
+*/
+
+.jv-project:hover .jv-project__overlay {
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.08) 0%,
+            rgba(0, 0, 0, 0.12) 35%,
+            rgba(0, 0, 0, 0.70) 100%
+        );
+
+}
+
+
+/* 
+================================================== 
+07. CONTENT 
+================================================== 
+*/
+
+.jv-project__content {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    align-items: flex-start;
+
+    padding:
+        clamp(28px, 5vw, 80px);
+
+    pointer-events: none;
+
+    transform:
+        translate3d(
+            var(--jv-content-x, 0px),
+            var(--jv-content-y, 0px),
+            70px
+        );
+
+    transform-style: preserve-3d;
+
+    will-change: transform;
+
+    transition:
+        transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+
+}
+
+
+/* 
+================================================== 
+08. META 
+================================================== 
+*/
+
+.jv-project__meta {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 0 0 18px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        clamp(10px, 0.75vw, 13px);
+
+    font-weight: 500;
+
+    line-height: 1.4;
+
+    letter-spacing: 0.16em;
+
+    text-transform: uppercase;
+
+    color: var(--jv-muted);
+
+    opacity: 0;
+
+    transform:
+        translate3d(0, 20px, 0);
+
+    transition:
+        opacity 700ms ease,
+        transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+
+    transition-delay: 80ms;
+
+}
+
+
+/* 
+================================================== 
+09. TITLE 
+================================================== 
+*/
+
+.jv-project__title {
+
+    margin: 0;
+
+    padding: 0;
+
+    max-width: 100%;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        clamp(48px, 9vw, 150px);
+
+    font-weight: 400;
+
+    line-height: 0.88;
+
+    letter-spacing: -0.045em;
+
+    color: var(--jv-text);
+
+    opacity: 0;
+
+    transform:
+        translate3d(0, 50px, 0);
+
+    transition:
+        opacity 900ms ease,
+        transform 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+
+    transition-delay: 140ms;
+
+}
+
+
+/* 
+================================================== 
+10. DETAILS 
+================================================== 
+*/
+
+.jv-project__details {
+
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 24px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        clamp(12px, 0.9vw, 15px);
+
+    font-weight: 400;
+
+    line-height: 1.5;
+
+    color: var(--jv-muted);
+
+    opacity: 0;
+
+    transform:
+        translate3d(0, 20px, 0);
+
+    transition:
+        opacity 700ms ease,
+        transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+
+    transition-delay: 220ms;
+
+}
+
+
+/* 
+================================================== 
+11. CTA 
+================================================== 
+*/
+
+.jv-project__cta {
+
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-top: 38px;
+
+    padding-bottom: 10px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        clamp(11px, 0.8vw, 14px);
+
+    font-weight: 500;
+
+    line-height: 1;
+
+    letter-spacing: 0.14em;
+
+    text-transform: uppercase;
+
+    color: var(--jv-text);
+
+    opacity: 0;
+
+    transform:
+        translate3d(0, 20px, 0);
+
+    transition:
+        opacity 700ms ease,
+        transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
+        color 500ms ease,
+        text-shadow 500ms ease;
+
+    transition-delay: 300ms;
+
+}
+
+
+/* 
+================================================== 
+12. CTA LINE 
+================================================== 
+*/
+
+.jv-project__cta::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 1px;
+
+    background: currentColor;
+
+    transform:
+        scaleX(0);
+
+    transform-origin: left center;
+
+    transition:
+        transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+
+}
+
+
+/* 
+================================================== 
+13. ARROW 
+================================================== 
+*/
+
+.jv-project__arrow {
+
+    display: inline-block;
+
+    font-size: 18px;
+
+    line-height: 1;
+
+    transform:
+        translateX(0)
+        rotate(0deg);
+
+    transition:
+        transform 600ms cubic-bezier(0.22, 1, 0.36, 1),
+        color 500ms ease,
+        text-shadow 500ms ease;
+
+}
+
+
+/* 
+================================================== 
+14. REVEAL 
+================================================== 
+*/
+
+.jv-project.is-visible .jv-project__meta,
+.jv-project.is-visible .jv-project__title,
+.jv-project.is-visible .jv-project__details,
+.jv-project.is-visible .jv-project__cta {
+
+    opacity: 1;
+
+    transform:
+        translate3d(0, 0, 0);
+
+}
+
+
+/* 
+================================================== 
+15. HOVER CTA 
+================================================== 
+*/
+
+@media (hover: hover) and (pointer: fine) {
+
+    .jv-project:hover .jv-project__cta::after {
+
+        transform:
+            scaleX(1);
+
+    }
+
+
+    .jv-project:hover .jv-project__arrow {
+
+        transform:
+            translateX(9px)
+            rotate(-7deg);
+
+    }
+
+}
+
+
+/* 
+================================================== 
+16. FOCUS 
+================================================== 
+*/
+
+.jv-project:focus-visible {
+
+    outline:
+        2px solid #ffffff;
+
+    outline-offset:
+        -6px;
+
+}
+
+
+/* 
+================================================== 
+17. TABLET 
+================================================== 
+*/
+
+@media (max-width: 1024px) {
+
+    .jv-project {
+
+        --jv-height: 78vh;
+
+        perspective: none;
+
+    }
+
+
+    .jv-project__content {
+
+        padding:
+            clamp(28px, 6vw, 60px);
+
+    }
+
+}
+
+
+/* 
+================================================== 
+18. MOBILE 
+================================================== 
+*/
+
+@media (max-width: 767px) {
+
+    .jv-project {
+
+        --jv-height: 72vh;
+
+        perspective: none;
+
+    }
+
+
+    .jv-project__image {
+
+        inset: -2%;
+
+        width: 104%;
+        height: 104%;
+
+    }
+
+
+    .jv-project__content {
+
+        padding:
+            28px 22px 32px;
+
+        transform:
+            translate3d(0, 0, 0);
+
+    }
+
+
+    .jv-project__meta {
+
+        margin-bottom: 14px;
+
+        font-size: 10px;
+
+        letter-spacing: 0.13em;
+
+    }
+
+
+    .jv-project__title {
+
+        font-size:
+            clamp(48px, 17vw, 88px);
+
+        letter-spacing:
+            -0.04em;
+
+    }
+
+
+    .jv-project__details {
+
+        margin-top: 18px;
+
+        font-size: 12px;
+
+    }
+
+
+    .jv-project__cta {
+
+        margin-top: 28px;
+
+        font-size: 10px;
+
+        letter-spacing: 0.12em;
+
+    }
+
+
+    .jv-project__arrow {
+
+        font-size: 16px;
+
+    }
+
+}
+
+
+/* 
+================================================== 
+19. SMALL MOBILE 
+================================================== 
+*/
+
+@media (max-width: 420px) {
+
+    .jv-project {
+
+        --jv-height: 68vh;
+
+    }
+
+
+    .jv-project__content {
+
+        padding:
+            24px 18px 28px;
+
+    }
+
+
+    .jv-project__title {
+
+        font-size:
+            52px;
+
+    }
+
+}
+
+
+/* 
+================================================== 
+20. RESPONSIVE PHOTOGRAPHY 
+================================================== 
+*/
+
+
+/* 
+-------------------------------------------------- 
+TABLET 
+-------------------------------------------------- 
+*/
+
+@media (max-width: 1024px) {
+
+    .jv-project {
+
+        --jv-height: auto;
+
+        aspect-ratio: 16 / 10;
+
+        min-height: 0;
+
+    }
+
+
+    .jv-project__image {
+
+        background-size: contain;
+
+        background-color: #111;
+
+    }
+
+
+    .jv-project:hover .jv-project__image {
+
+        transform:
+            scale(1.035);
+
+    }
+
+}
+
+
+/* 
+-------------------------------------------------- 
+MOBILE 
+-------------------------------------------------- 
+*/
+
+@media (max-width: 767px) {
+
+    .jv-project {
+
+        aspect-ratio: 4 / 3;
+
+        height: auto;
+
+        min-height: 0;
+
+        perspective: none;
+
+    }
+
+
+    .jv-project__image {
+
+        inset: 0;
+
+        width: 100%;
+        height: 100%;
+
+        background-size: contain;
+
+        background-position: center center;
+
+        background-color: #111;
+
+    }
+
+
+    .jv-project__content {
+
+        padding:
+            22px 20px 24px;
+
+    }
+
+}
+
+
+/* 
+-------------------------------------------------- 
+VERY NARROW PHONES 
+-------------------------------------------------- 
+*/
+
+@media (max-width: 420px) {
+
+    .jv-project {
+
+        aspect-ratio: 4 / 3;
+
+    }
+
+
+    .jv-project__content {
+
+        padding:
+            20px 18px 22px;
+
+    }
+
+}
+
+
+/* 
+================================================== 
+21. REDUCED MOTION 
+================================================== 
+*/
+
+@media (prefers-reduced-motion: reduce) {
+
+    .jv-project,
+    .jv-project *,
+    .jv-project *::before,
+    .jv-project *::after {
+
+        transition:
+            none !important;
+
+        animation:
+            none !important;
+
+    }
+
+
+    .jv-project__image {
+
+        transform:
+            scale(1.035) !important;
+
+    }
+
+
+    .jv-project__content {
+
+        transform:
+            none !important;
+
+    }
+
+}
+
+
+/* 
+================================================== 
+22. CINEMATIC IMAGE EXIT 
+================================================== 
+*/
+
+.jv-project {
+
+    transform-origin: center center;
+
+}
+
+
+/* 
+-------------------------------------------------- 
+PROJECT EXIT STATE 
+-------------------------------------------------- 
+*/
+
+.jv-project.is-exiting {
+
+    pointer-events: none;
+
+    z-index: 20;
+
+    transform:
+        scale(1.035);
+
+    transition:
+        transform 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+
+}
+
+
+/* 
+-------------------------------------------------- 
+IMAGE DEEP ZOOM 
+-------------------------------------------------- 
+*/
+
+.jv-project.is-exiting .jv-project__image {
+
+    transform:
+        translate3d(0, 0, 0)
+        scale(1.42);
+
+    opacity: 0;
+
+    transition:
+        transform 950ms cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 750ms cubic-bezier(0.22, 1, 0.36, 1);
+
+}
+
+
+/* 
+-------------------------------------------------- 
+OVERLAY 
+-------------------------------------------------- 
+*/
+
+.jv-project.is-exiting .jv-project__overlay {
+
+    opacity: 0;
+
+    transition:
+        opacity 500ms ease;
+
+}
+
+
+/* 
+-------------------------------------------------- 
+CONTENT EXIT 
+-------------------------------------------------- 
+*/
+
+.jv-project.is-exiting .jv-project__content {
+
+    opacity: 0;
+
+    transform:
+        translate3d(0, 30px, 70px);
+
+    transition:
+        opacity 350ms ease,
+        transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+
+}
+
+
+/* 
+-------------------------------------------------- 
+CTA EXIT 
+-------------------------------------------------- 
+*/
+
+.jv-project.is-exiting .jv-project__cta {
+
+    opacity: 0;
+
+}
+
+
+/* 
+================================================== 
+23. MOBILE EXIT 
+================================================== 
+*/
+
+@media (max-width: 767px) {
+
+    .jv-project.is-exiting .jv-project__image {
+
+        transform:
+            translate3d(0, 0, 0)
+            scale(1.32);
+
+        opacity: 0;
+
+        transition:
+            transform 850ms cubic-bezier(0.22, 1, 0.36, 1),
+            opacity 650ms ease;
+
+    }
+
+}
+
+
+/* 
+================================================== 
+24. REDUCED MOTION 
+================================================== 
+*/
+
+@media (prefers-reduced-motion: reduce) {
+
+    .jv-project.is-exiting {
+
+        transform:
+            none;
+
+    }
+
+
+    .jv-project.is-exiting .jv-project__image {
+
+        transform:
+            scale(1.05);
+
+        opacity:
+            0;
+
+        transition:
+            opacity 250ms ease;
+
+    }
+
+}
+
+
+/* 
+================================================== 
+25. LUZ Y ALMA — SPECIAL HOMEPAGE SHOWCASE 
+================================================== 
+*/
+
+/*
+ * This variant only affects:
+ *
+ * .jv-project--luzyalma
+ *
+ * All other projects remain untouched.
+ */
+
+
+/* 
+-------------------------------------------------- 
+LUZ Y ALMA — MAIN CARD
+-------------------------------------------------- 
+*/
+
+.jv-project--luzyalma {
+
+    --jv-height: 500px;
+
+    width: 100%;
+
+    max-width: 1200px;
+
+    height: 500px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+/* 
+-------------------------------------------------- 
+LUZ Y ALMA — IMAGE
+-------------------------------------------------- 
+*/
+
+.jv-project--luzyalma .jv-project__image {
+
+    background-size: cover;
+
+    background-position: center center;
+
+}
+
+
+/* 
+-------------------------------------------------- 
+LUZ Y ALMA — OVERLAY
+-------------------------------------------------- 
+*/
+
+.jv-project--luzyalma .jv-project__overlay {
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.22) 0%,
+            rgba(0, 0, 0, 0.10) 42%,
+            rgba(0, 0, 0, 0.06) 72%,
+            rgba(0, 0, 0, 0.12) 100%
+        );
+
+}
+
+
+/* 
+-------------------------------------------------- 
+LUZ Y ALMA — HOVER OVERLAY
+-------------------------------------------------- 
+*/
+
+.jv-project--luzyalma:hover .jv-project__overlay {
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.30) 0%,
+            rgba(0, 0, 0, 0.14) 42%,
+            rgba(0, 0, 0, 0.08) 72%,
+            rgba(0, 0, 0, 0.16) 100%
+        );
+
+}
+
+
+/* 
+-------------------------------------------------- 
+LUZ Y ALMA — CONTENT
+-------------------------------------------------- 
+*/
+
+.jv-project--luzyalma .jv-project__content {
+
+    padding:
+        48px
+        clamp(38px, 5vw, 72px);
+
+}
+
+
+/* 
+-------------------------------------------------- 
+LUZ Y ALMA — META
+-------------------------------------------------- 
+*/
+
+.jv-project--luzyalma .jv-project__meta {
+
+    color: #ffffff;
+
+    /*
+     * Fine gold contour + glow.
+     * This helps the white typography
+     * separate from white areas of the
+     * black & white photograph.
+     */
+    -webkit-text-stroke:
+        0.35px rgba(212, 175, 55, 0.85);
+
+    text-shadow:
+        0 0 3px rgba(212, 175, 55, 0.95),
+        0 0 8px rgba(212, 175, 55, 0.40);
+
+}
+
+
+/* 
+-------------------------------------------------- 
+LUZ Y ALMA — TITLE
+-------------------------------------------------- 
+*/
+
+.jv-project--luzyalma .jv-project__title {
+
+    max-width: 820px;
+
+    color: #D4AF37;
+
+    /*
+     * Very subtle golden glow.
+     * The title remains elegant rather than
+     * looking like a neon effect.
+     */
+    text-shadow:
+        0 0 2px rgba(212, 175, 55, 0.95),
+        0 0 8px rgba(212, 175, 55, 0.35),
+        0 2px 12px rgba(0, 0, 0, 0.35);
+
+    font-size:
+        clamp(46px, 6.5vw, 88px);
+
+    line-height:
+        0.90;
+
+    letter-spacing:
+        -0.045em;
+
+}
+
+
+/* 
+-------------------------------------------------- 
+LUZ Y ALMA — DETAILS
+-------------------------------------------------- 
+*/
+
+.jv-project--luzyalma .jv-project__details {
+
+    color: #ffffff;
+
+    /*
+     * Gold contour around the white text.
+     */
+    -webkit-text-stroke:
+        0.30px rgba(212, 175, 55, 0.85);
+
+    text-shadow:
+        0 0 3px rgba(212, 175, 55, 0.95),
+        0 0 8px rgba(212, 175, 55, 0.35),
+        0 2px 8px rgba(0, 0, 0, 0.35);
+
+    max-width:
+        720px;
+
+    margin-top:
+        20px;
+
+}
+
+
+/* 
+-------------------------------------------------- 
+LUZ Y ALMA — CTA
+-------------------------------------------------- 
+*/
+
+.jv-project--luzyalma .jv-project__cta {
+
+    color: #ffffff;
+
+    /*
+     * White by default with a discreet
+     * golden outline/glow.
+     */
+    -webkit-text-stroke:
+        0.30px rgba(212, 175, 55, 0.80);
+
+    text-shadow:
+        0 0 3px rgba(212, 175, 55, 0.80),
+        0 0 8px rgba(212, 175, 55, 0.25);
+
+    transition:
+        opacity 700ms ease,
+        transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
+        color 450ms ease,
+        text-shadow 450ms ease;
+
+}
+
+
+/* 
+-------------------------------------------------- 
+LUZ Y ALMA — CTA UNDERLINE
+-------------------------------------------------- 
+*/
+
+.jv-project--luzyalma .jv-project__cta::after {
+
+    background:
+        #ffffff;
+
+    box-shadow:
+        0 0 5px rgba(212, 175, 55, 0.75);
+
+}
+
+
+/* 
+-------------------------------------------------- 
+LUZ Y ALMA — ARROW
+-------------------------------------------------- 
+*/
+
+.jv-project--luzyalma .jv-project__arrow {
+
+    color:
+        #ffffff;
+
+    text-shadow:
+        0 0 3px rgba(212, 175, 55, 0.85),
+        0 0 8px rgba(212, 175, 55, 0.30);
+
+}
+
+
+/* 
+================================================== 
+26. LUZ Y ALMA — HOVER
+================================================== 
+*/
+
+@media (hover: hover) and (pointer: fine) {
+
+    /*
+     * CTA becomes gold on hover.
+     */
+
+    .jv-project--luzyalma:hover .jv-project__cta {
+
+        color:
+            #D4AF37;
+
+        -webkit-text-stroke:
+            0.25px rgba(212, 175, 55, 0.65);
+
+        text-shadow:
+            0 0 3px rgba(212, 175, 55, 1),
+            0 0 10px rgba(212, 175, 55, 0.65),
+            0 0 20px rgba(212, 175, 55, 0.20);
+
+    }
+
+
+    /*
+     * CTA line becomes gold.
+     */
+
+    .jv-project--luzyalma:hover .jv-project__cta::after {
+
+        background:
+            #D4AF37;
+
+        box-shadow:
+            0 0 8px rgba(212, 175, 55, 0.85);
+
+    }
+
+
+    /*
+     * Arrow becomes gold too.
+     */
+
+    .jv-project--luzyalma:hover .jv-project__arrow {
+
+        color:
+            #D4AF37;
+
+        text-shadow:
+            0 0 4px rgba(212, 175, 55, 1),
+            0 0 10px rgba(212, 175, 55, 0.65);
+
+    }
+
+}
+
+
+/* 
+================================================== 
+27. LUZ Y ALMA — TABLET
+================================================== 
+*/
+
+@media (max-width: 1024px) {
+
+    .jv-project--luzyalma {
+
+        width: 100%;
+
+        max-width: 100%;
+
+        height: auto;
+
+        aspect-ratio:
+            16 / 7;
+
+        min-height:
+            0;
+
+    }
+
+
+    .jv-project--luzyalma .jv-project__image {
+
+        background-size:
+            cover;
+
+        background-position:
+            center center;
+
+    }
+
+
+    .jv-project--luzyalma .jv-project__content {
+
+        padding:
+            40px
+            clamp(30px, 5vw, 58px);
+
+    }
+
+
+    .jv-project--luzyalma .jv-project__title {
+
+        font-size:
+            clamp(40px, 7vw, 70px);
+
+    }
+
+}
+
+
+/* 
+================================================== 
+28. LUZ Y ALMA — MOBILE
+================================================== 
+*/
+
+@media (max-width: 767px) {
+
+    .jv-project--luzyalma {
+
+        width: 100%;
+
+        max-width: 100%;
+
+        height: auto;
+
+        aspect-ratio:
+            4 / 3;
+
+        min-height:
+            0;
+
+    }
+
+
+    .jv-project--luzyalma .jv-project__image {
+
+        inset:
+            0;
+
+        width:
+            100%;
+
+        height:
+            100%;
+
+        background-size:
+            cover;
+
+        background-position:
+            center center;
+
+    }
+
+
+    .jv-project--luzyalma .jv-project__overlay {
+
+        background:
+            linear-gradient(
+                180deg,
+                rgba(0, 0, 0, 0.10) 0%,
+                rgba(0, 0, 0, 0.16) 38%,
+                rgba(0, 0, 0, 0.42) 72%,
+                rgba(0, 0, 0, 0.68) 100%
+            );
+
+    }
+
+
+    .jv-project--luzyalma:hover .jv-project__overlay {
+
+        background:
+            linear-gradient(
+                180deg,
+                rgba(0, 0, 0, 0.14) 0%,
+                rgba(0, 0, 0, 0.20) 38%,
+                rgba(0, 0, 0, 0.48) 72%,
+                rgba(0, 0, 0, 0.74) 100%
+            );
+
+    }
+
+
+    .jv-project--luzyalma .jv-project__content {
+
+        padding:
+            26px
+            22px
+            28px;
+
+    }
+
+
+    .jv-project--luzyalma .jv-project__meta {
+
+        margin-bottom:
+            12px;
+
+        font-size:
+            9px;
+
+    }
+
+
+    .jv-project--luzyalma .jv-project__title {
+
+        max-width:
+            100%;
+
+        font-size:
+            clamp(38px, 12vw, 64px);
+
+        line-height:
+            0.90;
+
+    }
+
+
+    .jv-project--luzyalma .jv-project__details {
+
+        margin-top:
+            16px;
+
+        font-size:
+            11px;
+
+    }
+
+
+    .jv-project--luzyalma .jv-project__cta {
+
+        margin-top:
+            24px;
+
+        font-size:
+            10px;
+
+    }
+
+
+    .jv-project--luzyalma .jv-project__arrow {
+
+        font-size:
+            16px;
+
+    }
+
+}
+
+
+/* 
+================================================== 
+29. LUZ Y ALMA — SMALL MOBILE
+================================================== 
+*/
+
+@media (max-width: 420px) {
+
+    .jv-project--luzyalma {
+
+        aspect-ratio: 4 / 3;
+
+    }
+
+
+    .jv-project--luzyalma .jv-project__content {
+
+        padding:
+            22px
+            18px
+            24px;
+
+    }
+
+
+    .jv-project--luzyalma .jv-project__title {
+
+        font-size:
+            48px;
+
+    }
+
+}
